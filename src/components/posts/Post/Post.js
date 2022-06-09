@@ -57,13 +57,22 @@ function Post({ post, setCurrentId }) {
         <Typography className={classes.title} variant="h5" gutterBottom>
           {post.title}
         </Typography>
-        <Typography className={classes.title} variant="h5" gutterBottom>
+        <Typography
+          className={classes.title}
+          variant="body2"
+          color="textSecondary"
+          gutterBottom
+        >
           {post.message}
         </Typography>
       </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(likePost(post._id))}
+        >
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
         </Button>
         <Button
