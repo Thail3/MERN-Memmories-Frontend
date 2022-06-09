@@ -18,6 +18,7 @@ import useStyles from "./styles";
 
 function Post({ post, setCurrentId }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Card className={classes.card}>
@@ -65,7 +66,11 @@ function Post({ post, setCurrentId }) {
         <Button size="small" color="primary" onClick={() => {}}>
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
         </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(deletePost(post._id))}
+        >
           <DeleteIcon fontSize="small" /> Delete
         </Button>
       </CardActions>
