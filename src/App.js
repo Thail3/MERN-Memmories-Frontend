@@ -34,8 +34,10 @@ function App() {
       <Grow in>
         <Container>
           <Grid
+            className={classes.mainContainer}
             container
             justify="space-between"
+            // direction="column-reverse"
             alignItems="stretch"
             spacing={3}
           >

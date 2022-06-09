@@ -48,19 +48,25 @@ function Post({ post, setCurrentId }) {
       </div>
 
       <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body2" color="textSecondary" component="h2">
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
 
+      <Typography
+        className={classes.title}
+        gutterBottom
+        variant="h5"
+        component="h2"
+      >
+        {post.title}
+      </Typography>
+
       <CardContent>
-        <Typography className={classes.title} variant="h5" gutterBottom>
-          {post.title}
-        </Typography>
         <Typography
-          className={classes.title}
           variant="body2"
           color="textSecondary"
+          component="p"
           gutterBottom
         >
           {post.message}
@@ -73,7 +79,8 @@ function Post({ post, setCurrentId }) {
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp; Like &nbsp; {post.likeCount}{" "}
         </Button>
         <Button
           size="small"
