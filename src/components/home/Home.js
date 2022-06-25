@@ -47,8 +47,11 @@ function Home() {
     setTags(tags.filter((tag) => tag !== chipToDelete));
 
   const searchPost = () => {
-    if (search.trim()) {
-      dispatch(getPostsBySearch({ search, tag: tags.join(",") }));
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
+      navigate(
+        `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+      );
     } else {
       navigate("/");
     }
