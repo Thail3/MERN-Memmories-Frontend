@@ -17,6 +17,13 @@ function Navbar() {
 
   console.log(user);
 
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+
+    navigate("/");
+    setUser(null);
+  };
+
   useEffect(() => {
     const token = user?.token;
 
@@ -29,13 +36,6 @@ function Navbar() {
     // JWT
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
-
-  const logout = () => {
-    dispatch({ type: "LOGOUT" });
-
-    navigate("/");
-    setUser(null);
-  };
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
