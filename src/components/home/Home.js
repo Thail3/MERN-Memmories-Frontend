@@ -12,7 +12,7 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
 
-import { getPosts, getPostsBySearch } from "../../actions/posts";
+import { getPostsBySearch } from "../../actions/posts";
 import Pagination from "../Pagination";
 import Posts from "../posts/Posts";
 import Form from "../form/Form";
@@ -36,10 +36,6 @@ function Home() {
 
   const page = query.get("page") || 1;
   const searchQuery = query.get("searchQuery");
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [currentId, dispatch]);
 
   const handleAddChip = (tag) => setTags([...tags, tag]);
 
@@ -110,7 +106,7 @@ function Home() {
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             <Paper className={classes.pagination} elevation={6}>
-              <Pagination />
+              <Pagination page={page} />
             </Paper>
           </Grid>
         </Grid>
