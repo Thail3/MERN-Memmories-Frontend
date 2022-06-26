@@ -6,13 +6,16 @@ import {
   CardMedia,
   Button,
   Typography,
+  // ButtonBase,
 } from "@material-ui/core/";
+
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { likePost, deletePost } from "../../../actions/posts";
 import useStyles from "./styles";
@@ -20,6 +23,7 @@ import useStyles from "./styles";
 function Post({ post, setCurrentId }) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -51,13 +55,24 @@ function Post({ post, setCurrentId }) {
     );
   };
 
+  const openPost = () => {
+    navigate(`/posts/${post._id}`);
+  };
+
   return (
     <Card className={classes.card} raised elevation={6}>
-      <CardMedia
-        className={classes.media}
-        image={post.selectedFile}
-        title={post.title}
-      />
+      <Card
+        component="span"
+        name="test"
+        className={classes.cardAction}
+        onClick={openPost}
+      >
+        <CardMedia
+          className={classes.media}
+          image={post.selectedFile}
+          title={post.title}
+        />
+      </Card>
 
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
