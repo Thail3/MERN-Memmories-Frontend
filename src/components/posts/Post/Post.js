@@ -61,7 +61,7 @@ function Post({ post, setCurrentId }) {
 
   return (
     <Card className={classes.card} raised elevation={6}>
-      <Card
+      <div
         component="span"
         name="test"
         className={classes.cardAction}
@@ -72,7 +72,7 @@ function Post({ post, setCurrentId }) {
           image={post.selectedFile}
           title={post.title}
         />
-      </Card>
+      </div>
 
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
